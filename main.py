@@ -30,12 +30,14 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            
+        
+        # PLAYER MOVEMENT
+        player_obj.update(dt)
         # Clean Screen
         screen.fill("black")
         # Draw Player
         player_obj.draw(screen)
-        # Show canvas to user
+        # Refresh the screen
         pygame.display.flip()
         # Control frame rate
         dt = clock.tick(60)/1000
