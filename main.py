@@ -4,7 +4,6 @@ from constants import *
 from player import Player
 
 def main():
-    # TERMINAL MESSAGES TO CHECK IF EVERYTHING IS OK
     print("Starting Asteroids with pygame version: 2.6.1!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
@@ -19,24 +18,28 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
-    # PLAYER
-    x = SCREEN_WIDTH / 2
-    y = SCREEN_HEIGHT / 2
-    player_obj = Player(x,y)
-    
+    # GROUPS / EVERYTIME AN OBJECT IS CREATED, IT IS ADDED TO A GROUP
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
+    # CREATE PLAYER OBJECT
+    player_obj = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
     # GAME LOOP
     while True:
-        log_state()
-        for event in pygame.event.get():
+        log_state() #for boot.dev logging purposes
+        for event in pygame.event.get(): # for the window close
             if event.type == pygame.QUIT:
                 return
         
         # PLAYER MOVEMENT
-        player_obj.update(dt)
+        updatable.update(dt)
         # Clean Screen
         screen.fill("black")
         # Draw Player
-        player_obj.draw(screen)
+        for item in drawable:
+            item.draw(screen)
         # Refresh the screen
         pygame.display.flip()
         # Control frame rate
