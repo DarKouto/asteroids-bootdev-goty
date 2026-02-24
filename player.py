@@ -1,5 +1,6 @@
 import pygame
 from circleshape import CircleShape
+from shot import Shot
 from constants import *
 
 # THE PLAYER IS A TRIANGLE, BUT THE HITBOX IS AN INVISIBLE CIRCLE, HENCE "CIRCLESHAPE"
@@ -7,6 +8,7 @@ class Player(CircleShape):
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
+        cooldown_timer = 0
     
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
@@ -28,6 +30,11 @@ class Player(CircleShape):
         rotated_vector = unit_vector.rotate(self.rotation)
         rotated_with_speed_vector = rotated_vector * PLAYER_SPEED * dt
         self.position += rotated_with_speed_vector
+
+    def shoot(self, dt):
+        shot_obj = Shot(self.position, self.rotation, SHOT_RADIUS)
+        shot_obj.velocity = pygame.Vector2(0,1).rotate(self.rotation)
+        shot_obj.velocity *= PLAYER_SHOOT_SPEED
     
     def update(self, dt):
         keys = pygame.key.get_pressed()
@@ -43,3 +50,9 @@ class Player(CircleShape):
             self.move(dt)
         if keys[pygame.K_s]:
             self.move(-dt)
+
+        # SHOOTING
+        if keys[pygame.K_SPACE]:
+            self.shoot(dt)
+    
+    
