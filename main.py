@@ -52,12 +52,13 @@ def main():
                 print("Game over!")
                 sys.exit(0)
         
-        # COLLISIONS: SHOT VS ASTEROID
+        # ASTEROID IS SHOT
         for asteroid in asteroids:
             for shot in shots:
                 if asteroid.collides_with(shot):
                     log_event("asteroid_shot")
-                    asteroid.kill()
+                    asteroid.split()
+                    shot.kill()
 
         # CLEAN SCREEN / DRAW PLAYER
         screen.fill("black")
