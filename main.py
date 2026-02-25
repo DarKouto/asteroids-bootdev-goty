@@ -11,17 +11,15 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
 
-    # INITIALIZE PYGAME
+    # INITIALIZE PYGAME / DRAW SCREEN
     pygame.init()
-
-    # DRAW SCREEN
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     # FPS / DELTA TIME
     clock = pygame.time.Clock()
     dt = 0
 
-    # GROUPS / EVERYTIME AN OBJECT IS CREATED, IT IS ADDED TO A GROUP
+    # GROUPS / EVERYTIME AN OBJECT IS CREATED, IT'S ADDED TO A GROUP
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
@@ -38,7 +36,9 @@ def main():
     # GAME LOOP
     while True:
         log_state() #for boot.dev logging purposes
-        for event in pygame.event.get(): # for the window close
+
+        # CLOSING WINDOW
+        for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         
@@ -51,6 +51,7 @@ def main():
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit(0)
+        
         # COLLISIONS: SHOT VS ASTEROID
         for asteroid in asteroids:
             for shot in shots:
