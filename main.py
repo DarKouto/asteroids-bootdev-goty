@@ -10,6 +10,7 @@ def main():
     print("Starting Asteroids with pygame version: 2.6.1!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
+    input("Press any key to start")
 
     # INITIALIZE PYGAME / DRAW SCREEN
     pygame.init()
