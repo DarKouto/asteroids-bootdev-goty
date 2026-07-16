@@ -1,17 +1,15 @@
 import pygame, sys
 from logger import log_state, log_event
 from constants import *
+from customfunctions import *
 from player import Player
 from asteroidfield import AsteroidField
 from asteroid import Asteroid
 from shot import Shot
 
 def main():
-    print("Starting Asteroids with pygame version: 2.6.1!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
-    input("Press any key to start")
-
+    welcome_screen()
+    
     # INITIALIZE PYGAME / DRAW SCREEN
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
