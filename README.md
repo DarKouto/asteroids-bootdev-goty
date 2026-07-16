@@ -4,6 +4,8 @@ Asteroids game clone from Boot.dev in Python
 
 This project is part of the Boot.dev curriculum, and serves as a project to apply the concepts of Python's Object Oriented Programming, as well as using an external library like PyGame. Now that the course is finished, I decided to add more features to the game, to make it my own, and to try and win the GOTY award.
 
+*WORK IN PROGRESS*
+
 ## 🛠️ Installation
 
 ### Requirements
@@ -22,6 +24,6 @@ uv run main.py
 ```
 
 ## 📕 Game Manual
-- Use the *WASD* keys to move the spaceship
-- Use the *SPACE* key to shoot
+- Use the **WASD** keys to move the spaceship
+- Use the **SPACE** key to shoot
 - The game ends when the spaceship is hit by and asteroid
