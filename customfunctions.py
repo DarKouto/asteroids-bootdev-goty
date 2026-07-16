@@ -1,4 +1,9 @@
+import pygame
 from constants import *
+from asteroid import Asteroid
+from shot import Shot
+from player import Player
+from asteroidfield import AsteroidField
 
 def welcome_screen():
     print("")
@@ -22,4 +27,12 @@ def welcome_screen():
     input("Press ENTER to start the game")
 
 def create_groups():
-    pass
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+    Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = (updatable)
+    Shot.containers = (shots, drawable, updatable)
+    return updatable, drawable, asteroids, shots

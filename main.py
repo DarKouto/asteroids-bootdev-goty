@@ -4,29 +4,22 @@ from constants import *
 from customfunctions import *
 from player import Player
 from asteroidfield import AsteroidField
-from asteroid import Asteroid
-from shot import Shot
 
 def main():
     welcome_screen()
-    
-    # INITIALIZE PYGAME / DRAW SCREEN
+
+    # INITIALIZE PYGAME
     pygame.init()
+    
+    # DRAW SCREEN
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    # FPS / DELTA TIME
+    # SET FPS / DELTA TIME
     clock = pygame.time.Clock()
     dt = 0
 
     # GROUPS / EVERYTIME AN OBJECT IS CREATED, IT'S ADDED TO A GROUP
-    updatable = pygame.sprite.Group()
-    drawable = pygame.sprite.Group()
-    asteroids = pygame.sprite.Group()
-    shots = pygame.sprite.Group()
-    Player.containers = (updatable, drawable)
-    Asteroid.containers = (asteroids, updatable, drawable)
-    AsteroidField.containers = (updatable)
-    Shot.containers = (shots, drawable, updatable)
+    updatable, drawable, asteroids, shots = create_groups()
 
     # CREATE PLAYER / ASTEROID OBJECT
     player_obj = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
