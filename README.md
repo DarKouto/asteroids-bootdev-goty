@@ -10,7 +10,6 @@ This project is part of the Boot.dev curriculum, and serves as a project to appl
 - [Python](https://www.python.org/)
 - [UV](https://docs.astral.sh/uv/)
 
-
 ### Clone the Repo and CD into it
 ```bash
 git clone https://github.com/DarKouto/asteroids-bootdev-goty.git
@@ -21,3 +20,8 @@ cd asteroids-bootdev-goty
 ```bash
 uv run main.py
 ```
+
+## 📕 Game Manual
+- Use the *WASD* keys to move the spaceship
+- Use the *SPACE* key to shoot
+- The game ends when the spaceship is hit by and asteroid
