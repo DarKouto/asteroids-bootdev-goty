@@ -1,3 +1,5 @@
+# CODE FROM BOOT.DEV
+
 import pygame
 import random
 from asteroid import Asteroid
