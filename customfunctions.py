@@ -29,3 +29,16 @@ def create_groups():
     AsteroidField.containers = (updatable)
     Shot.containers = (shots, drawable, updatable)
     return updatable, drawable, asteroids, shots
+
+def check_score(score):
+    score_board = pygame.font.Font(None, 36)
+    return score_board.render(f"Score: {score}", True, "white")
+
+def check_lives(lives):
+    lives_board = pygame.font.Font(None, 36)
+    if lives == 3:
+        return lives_board.render(f"Lives: {lives}", True, "white")
+    elif lives == 2:
+        return lives_board.render(f"Lives: {lives}", True, "yellow")
+    elif lives == 1:
+        return lives_board.render(f"Lives: {lives}", True, "red")

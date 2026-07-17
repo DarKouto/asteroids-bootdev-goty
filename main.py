@@ -14,11 +14,7 @@ def main():
     updatable, drawable, asteroids, shots = create_groups() # ADD OBJECTS TO GROUPS
     player_obj = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) # SPAWN PLAYER IN THE MIDDLE OF THE SCREEN
     AsteroidField() # CREATE ASTEROID FIELD
-
-    score_board = pygame.font.Font(None, 36)
-    score = 0
-    lives_board = pygame.font.Font(None, 36)
-    lives = 3
+    score, lives = 0, 3
 
     # GAME LOOP
     while True:
@@ -59,11 +55,8 @@ def main():
             item.draw(screen)
         
         # SHOW SCORE / LIVES
-        score_text = score_board.render(f"Score: {score}", True, "white")
-        screen.blit(score_text, (10, 10))
-        lives_text = lives_board.render(f"Lives: {lives}", True, "white")
-        screen.blit(lives_text, (1175, 10))
-
+        screen.blit(check_score(score), (10, 10))
+        screen.blit(check_lives(lives), (1180, 10))
 
         # REFRESH THE SCREEN / SET FRAME RATE
         pygame.display.flip()
