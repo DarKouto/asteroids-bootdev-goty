@@ -14,7 +14,11 @@ def main():
     updatable, drawable, asteroids, shots = create_groups() # ADD OBJECTS TO GROUPS
     player_obj = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2) # SPAWN PLAYER IN THE MIDDLE OF THE SCREEN
     AsteroidField() # CREATE ASTEROID FIELD
+
+    score_board = pygame.font.Font(None, 36)
     score = 0
+    lives_board = pygame.font.Font(None, 36)
+    lives = 3
 
     # GAME LOOP
     while True:
@@ -32,9 +36,12 @@ def main():
         for asteroid in asteroids:
             if asteroid.collides_with(player_obj):
                 log_event("player_hit")
-                print("Game over!")
-                print(f"Final Score: {score}")
-                sys.exit(0)
+                lives -=1
+                asteroid.kill()
+                if lives == 0:
+                    print("Game over!")
+                    print(f"Final Score: {score}")
+                    sys.exit(0)
         
         # COLLISIONS: ASTEROID VS SHOT
         for asteroid in asteroids:
@@ -44,11 +51,19 @@ def main():
                     asteroid.split()
                     shot.kill()
                     score+=1
+        
+        screen.fill("black") # CLEAN SCREEN
 
-        # CLEAN SCREEN / DRAW PLAYER
-        screen.fill("black")
+        # DRAW PLAYER
         for item in drawable:
             item.draw(screen)
+        
+        # SHOW SCORE / LIVES
+        score_text = score_board.render(f"Score: {score}", True, "white")
+        screen.blit(score_text, (10, 10))
+        lives_text = lives_board.render(f"Lives: {lives}", True, "white")
+        screen.blit(lives_text, (1175, 10))
+
 
         # REFRESH THE SCREEN / SET FRAME RATE
         pygame.display.flip()
