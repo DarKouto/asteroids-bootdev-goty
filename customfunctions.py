@@ -14,7 +14,9 @@ def welcome_screen():
     print("HOW TO PLAY:")
     print(" - Use the WASD keys to move the spaceship")
     print(" - Use the SPACE key to shoot")
-    print(" - The game ends when the spaceship collides with an asteroid")
+    print(" - Everytime the spaceship collides with an asteroid you lose a life")
+    print(" - The game ends when you run out of lives")
+
     print("\n====================\n")
     input("Press ENTER to start the game")
 

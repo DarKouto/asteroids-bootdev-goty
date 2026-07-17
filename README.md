@@ -26,4 +26,5 @@ uv run main.py
 ## 📕 Game Manual
 - Use the **WASD** keys to move the spaceship
 - Use the **SPACE** key to shoot
-- The game ends when the spaceship collides with an asteroid
+- Everytime the spaceship collides with an asteroid you lose a life
+- The game ends when you run out of lives
